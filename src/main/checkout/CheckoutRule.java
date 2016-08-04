@@ -5,8 +5,9 @@ import main.entities.Product;
 
 import java.util.List;
 
+@FunctionalInterface
 public interface CheckoutRule {
 
-    Integer getDiscount(List<Product> items);
+    int getDiscount(List<Product> items);
 
 }

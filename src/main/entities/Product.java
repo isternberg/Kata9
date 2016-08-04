@@ -1,22 +1,27 @@
 package main.entities;
 
 
+import main.exceptions.NullSKUException;
+
 public class Product {
 
-    public Product(String SKU, Integer price) {
-        this.SKU = SKU;
+    public Product(String sku, int price) {
+        if (sku == null){
+            throw new NullSKUException("Product cannot have null as SKU.");
+        }
+        this.sku = sku;
         this.price = price;
     }
 
-    private String SKU;
+    private String sku;
 
-    private Integer price; // in productive code this would have to be a BigDecimal
+    private int price; // in productive code this would have to be a BigDecimal
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public String getSKU() {
-        return SKU;
+    public String getSku() {
+        return sku;
     }
 }

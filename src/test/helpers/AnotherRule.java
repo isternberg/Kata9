@@ -7,9 +7,9 @@ import java.util.List;
 
 public class AnotherRule implements CheckoutRule{
 
-    public Integer getDiscount(List<Product> items) {
-        Long countD = items.stream().filter(x -> x.getSKU().equals("D")).count();
-        Integer discount = 0;
+    public int getDiscount(List<Product> items) {
+        Long countD = items.stream().filter(x -> x.getSku().equals("D")).count();
+        int discount = 0;
         discount += (int) (long)countD / 2 * 5;
         return discount;
     }
