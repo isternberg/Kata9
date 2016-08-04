@@ -2,7 +2,6 @@ package test;
 
 import main.checkout.CheckOut;
 import main.checkout.CheckoutRule;
-import main.exceptions.BadSKUException;
 import main.exceptions.ProductNotInDBException;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ public class TestPriceWithOtherRule {
         rule = new AnotherRule();
     }
 
-    private int calculatePrice(String goods) throws BadSKUException {
+    private int calculatePrice(String goods) {
         CheckOut co = new CheckOut(rule);
         for(int i=0; i<goods.length(); i++) {
             co.scan(String.valueOf(goods.charAt(i)));
@@ -29,13 +28,13 @@ public class TestPriceWithOtherRule {
     }
 
     @Test(expected = ProductNotInDBException.class)
-    public void shouldThrowExceptionIfNoProductForKey() throws BadSKUException {
+    public void shouldThrowExceptionIfNoProductForKey()  {
         CheckOut co = new CheckOut(rule);
         co.scan("SOME WRONG KEY");
     }
 
     @Test
-    public void totals() throws BadSKUException {
+    public void totals()  {
         assertEquals(0, calculatePrice(""));
         assertEquals(20, calculatePrice("D"));
         assertEquals(35, calculatePrice("DD"));
@@ -44,7 +43,7 @@ public class TestPriceWithOtherRule {
     }
 
     @Test
-    public void incremental() throws BadSKUException {
+    public void incremental()  {
         CheckOut co = new CheckOut(rule);
         assertEquals(0, co.total());
         co.scan("A");

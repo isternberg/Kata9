@@ -2,7 +2,6 @@ package test;
 
 import main.checkout.CheckOut;
 import main.checkout.CheckoutRule;
-import main.exceptions.BadSKUException;
 import org.junit.Before;
 import org.junit.Test;
 import test.helpers.KataRule;
@@ -20,7 +19,7 @@ public class TestPrice {
         rule = new KataRule();
     }
 
-    public int calculatePrice(String goods) throws BadSKUException {
+    public int calculatePrice(String goods)  {
         CheckOut co = new CheckOut(rule);
         for(int i=0; i<goods.length(); i++) {
             co.scan(String.valueOf(goods.charAt(i)));
@@ -28,7 +27,7 @@ public class TestPrice {
         return co.total();
     }
     @Test
-    public void totals() throws BadSKUException {
+    public void totals()  {
         assertEquals(0, calculatePrice(""));
         assertEquals(40, calculatePrice("A"));
         assertEquals(90, calculatePrice("AB"));
@@ -47,7 +46,7 @@ public class TestPrice {
     }
 
     @Test
-    public void incremental() throws BadSKUException {
+    public void incremental()  {
         CheckOut co = new CheckOut(rule);
         assertEquals(0, co.total());
         co.scan("A");
