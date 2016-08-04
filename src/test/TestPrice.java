@@ -2,7 +2,6 @@ package test;
 
 import main.CheckOut;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +24,6 @@ public class TestPrice {
         }
         return co.total();
     }
-    @Ignore
     @Test
     public void totals() {
         assertEquals(0, calculatePrice(""));
@@ -44,6 +42,7 @@ public class TestPrice {
         assertEquals(200, calculatePrice("AAABBD"));
         assertEquals(200, calculatePrice("DABABA"));
     }
+
     @Test
     public void incremental() {
         CheckOut co = new CheckOut(rule);
