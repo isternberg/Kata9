@@ -1,10 +1,13 @@
 package test;
 
 import main.CheckOut;
-import main.CheckoutRule;
+import main.entities.Product;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,11 +15,13 @@ import static org.junit.Assert.assertEquals;
 
 public class TestPrice {
 
-    private CheckoutRule rule;
+    private TestRule rule;
 
     @Before
     public void setup(){
-        rule = new TestRule();
+        List<Product> products = Arrays.asList(new Product("A", 40), new Product("B", 50),
+                new Product("C", 25), new Product("D", 20));
+        rule = new TestRule(products);
     }
 
     public int calculatePrice(String goods) {
@@ -51,8 +56,8 @@ public class TestPrice {
         assertEquals(0, co.total());
         co.scan("A");
         assertEquals(40, co.total());
-//        co.scan("B");
-//        assertEquals(90, co.total);
+        co.scan("B");
+        assertEquals(90, co.total());
 //        co.scan("A");
 //        assertEquals(130, co.total);
 //        co.scan("A");

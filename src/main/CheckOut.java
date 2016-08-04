@@ -11,8 +11,7 @@ public class CheckOut {
     }
 
     public void scan(String sku) {
-        if (sku.equals("A"))
-            this.total += 40;
+        this.total += rule.getProductMap().get(sku).getPrice();
 
     }
 

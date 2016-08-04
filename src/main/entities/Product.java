@@ -7,6 +7,10 @@ public class Product {
         return price;
     }
 
+    public String getSKU() {
+        return SKU;
+    }
+
     private String SKU;
     private Integer price; // in productive code this would have to be a BigDecimal
 
