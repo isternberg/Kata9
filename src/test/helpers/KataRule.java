@@ -1,6 +1,6 @@
 package test.helpers;
 
-import main.CheckoutRule;
+import main.checkout.CheckoutRule;
 import main.entities.Product;
 
 import java.util.List;

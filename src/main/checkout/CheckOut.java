@@ -1,4 +1,4 @@
-package main;
+package main.checkout;
 
 import main.entities.Product;
 import main.persistance.MockedDB;
@@ -8,8 +8,8 @@ import java.util.List;
 
 public class CheckOut {
     private int total;
-    public CheckoutRule rule;
-    List<Product> items;
+    private CheckoutRule rule;
+    private List<Product> items;
 
     public CheckOut(CheckoutRule rule) {
         this.rule = rule;
@@ -24,6 +24,7 @@ public class CheckOut {
 
     public int total() {
         this.total = items.stream().mapToInt(Product::getPrice).sum();
-        return this.total - rule.getDiscount(items);
+        int totalWithRule = this.total - rule.getDiscount(items);
+        return totalWithRule;
     }
 }

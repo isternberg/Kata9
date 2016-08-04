@@ -1,7 +1,7 @@
 package test;
 
-import main.CheckOut;
-import main.CheckoutRule;
+import main.checkout.CheckOut;
+import main.checkout.CheckoutRule;
 import org.junit.Before;
 import org.junit.Test;
 import test.helpers.KataRule;

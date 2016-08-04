@@ -1,7 +1,7 @@
 package test;
 
-import main.CheckOut;
-import main.CheckoutRule;
+import main.checkout.CheckOut;
+import main.checkout.CheckoutRule;
 import org.junit.Before;
 import org.junit.Test;
 import test.helpers.AnotherRule;
@@ -18,13 +18,14 @@ public class TestPriceWithOtherRule {
         rule = new AnotherRule();
     }
 
-    public int calculatePrice(String goods) {
+    private int calculatePrice(String goods) {
         CheckOut co = new CheckOut(rule);
         for(int i=0; i<goods.length(); i++) {
             co.scan(String.valueOf(goods.charAt(i)));
         }
         return co.total();
     }
+
     @Test
     public void totals() {
         assertEquals(0, calculatePrice(""));
