@@ -3,27 +3,18 @@ package test;
 import main.CheckoutRule;
 import main.entities.Product;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class TestRule implements CheckoutRule {
 
-    private Map<String, Product> productMap;
 
-    public TestRule(List<Product> products) {
-        productMap = new HashMap<>();
-        productMap =products.stream().collect(Collectors.toMap(Product::getSKU, p-> p));
+    public Integer getDiscount(List<Product> items) {
+        Long countA = items.stream().filter(x -> x.getSKU().equals("A")).count();
+        Long countB =  items.stream().filter(x -> x.getSKU().equals("B")).count();
+        Integer discount = 0;
+        discount += (int) (long)countA / 3 * 20;
+        discount += (int) (long)countB / 2 * 20;
+        return discount;
     }
 
-    @Override
-    public void apply() {
-
-    }
-
-    @Override
-    public Map<String, Product> getProductMap() {
-        return productMap;
-    }
 }

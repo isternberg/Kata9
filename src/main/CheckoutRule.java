@@ -3,11 +3,10 @@ package main;
 
 import main.entities.Product;
 
-import java.util.Map;
+import java.util.List;
 
 public interface CheckoutRule {
 
-    void apply();
+    Integer getDiscount(List<Product> items);
 
-    Map<String, Product> getProductMap();
 }
