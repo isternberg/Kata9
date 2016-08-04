@@ -1,7 +1,7 @@
 package main.persistance;
 
 import main.entities.Product;
-import main.exceptions.NullSKUException;
+import main.exceptions.BadSKUException;
 import main.exceptions.ProductNotInDBException;
 
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class MockedDB {
 
     private static void handleInvalidSKU(String sku, Map<String, Product> productMap) {
         if (sku == null){
-            throw new NullSKUException("SKU cannot be null.");
+            throw new BadSKUException("SKU cannot be null.");
         }
         if (productMap.get(sku) == null ){
             throw new ProductNotInDBException

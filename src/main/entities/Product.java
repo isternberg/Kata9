@@ -1,13 +1,13 @@
 package main.entities;
 
 
-import main.exceptions.NullSKUException;
+import main.exceptions.BadSKUException;
 
 public class Product {
 
     public Product(String sku, int price) {
         if (sku == null){
-            throw new NullSKUException("Product cannot have null as SKU.");
+            throw new BadSKUException("Product cannot have null as SKU.");
         }
         this.sku = sku;
         this.price = price;

@@ -1,7 +1,7 @@
 package test;
 
 import main.entities.Product;
-import main.exceptions.NullSKUException;
+import main.exceptions.BadSKUException;
 import main.persistance.MockedDB;
 import org.junit.Test;
 
@@ -16,12 +16,12 @@ public class TestMockedDB {
         assertEquals(40, productA.getPrice());
     }
 
-    @Test(expected = NullSKUException.class)
+    @Test(expected = BadSKUException.class)
     public void shouldThrowExceptionIfSKUIsNull(){
         MockedDB.getBySku(null);
     }
 
-    @Test(expected = NullSKUException.class)
+    @Test(expected = BadSKUException.class)
     public void shouldThrowExceptionIfSKUIsNull2(){
         String sku = null;
         MockedDB.getBySku(sku);
