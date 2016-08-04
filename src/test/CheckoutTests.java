@@ -18,10 +18,17 @@ public class CheckoutTests {
     }
 
     @Test(expected = BadSKUException.class)
-    public void foo (){
+    public void shouldThrowExceptionIfSKUisEmptyString (){
         CheckoutRule checkoutRule = new AnotherRule();
         CheckOut checkOut = new CheckOut(checkoutRule);
         checkOut.scan(EMPTY_SKU);
+    }
+
+    @Test(expected = BadSKUException.class)
+    public void shouldThrowExceptionIfKeyIsNull() {
+        CheckoutRule checkoutRule = new AnotherRule();
+        CheckOut co = new CheckOut(checkoutRule);
+        co.scan(null);
     }
 
 }

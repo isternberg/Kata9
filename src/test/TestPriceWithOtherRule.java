@@ -34,13 +34,6 @@ public class TestPriceWithOtherRule {
         co.scan("SOME WRONG KEY");
     }
 
-    @Test(expected = BadSKUException.class)
-    public void shouldThrowExceptionIfKeyIsNull() throws BadSKUException {
-        CheckOut co = new CheckOut(rule);
-        co.scan(null);
-    }
-
-
     @Test
     public void totals() throws BadSKUException {
         assertEquals(0, calculatePrice(""));
