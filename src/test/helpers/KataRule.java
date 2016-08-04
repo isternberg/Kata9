@@ -1,11 +1,11 @@
-package test;
+package test.helpers;
 
 import main.CheckoutRule;
 import main.entities.Product;
 
 import java.util.List;
 
-public class TestRule implements CheckoutRule {
+public class KataRule implements CheckoutRule {
 
 
     public Integer getDiscount(List<Product> items) {

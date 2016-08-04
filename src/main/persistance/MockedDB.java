@@ -1,4 +1,4 @@
-package main.entities.persistance;
+package main.persistance;
 
 import main.entities.Product;
 

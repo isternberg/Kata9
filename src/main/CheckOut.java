@@ -1,7 +1,7 @@
 package main;
 
 import main.entities.Product;
-import main.entities.persistance.MockedDB;
+import main.persistance.MockedDB;
 
 import java.util.ArrayList;
 import java.util.List;

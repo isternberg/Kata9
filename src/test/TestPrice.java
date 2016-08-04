@@ -1,8 +1,10 @@
 package test;
 
 import main.CheckOut;
+import main.CheckoutRule;
 import org.junit.Before;
 import org.junit.Test;
+import test.helpers.KataRule;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,11 +12,11 @@ import static org.junit.Assert.assertEquals;
 
 public class TestPrice {
 
-    private TestRule rule;
+    private CheckoutRule rule;
 
     @Before
     public void setup(){
-        rule = new TestRule();
+        rule = new KataRule();
     }
 
     public int calculatePrice(String goods) {
