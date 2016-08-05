@@ -23,17 +23,17 @@ public class CheckOut {
 
     private void handleInvalidRules(CheckoutRule rule) {
         if (rule == null){
-            throw new NullRuleException("The Rule cannot be null");
+            throw new NullRuleException("The Rule cannot be null.");
         }
     }
 
-    public void scan(String sku) throws BadSKUException {
+    public void scan(String sku) {
         validateSKU(sku);
         Product product = MockedDB.getBySku(sku);
         items.add(product);
     }
 
-    private void validateSKU(String sku) throws BadSKUException {
+    private void validateSKU(String sku) {
         if (sku == null){
             throw new BadSKUException("SKU cannot be null.");
         }
