@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 
 
-public class TestPrice {
+public class TestPrice extends BaseTest{
 
     private CheckoutRule rule;
 
@@ -19,30 +19,23 @@ public class TestPrice {
         rule = new KataRule();
     }
 
-    public int calculatePrice(String goods)  {
-        CheckOut co = new CheckOut(rule);
-        for(int i=0; i<goods.length(); i++) {
-            co.scan(String.valueOf(goods.charAt(i)));
-        }
-        return co.total();
-    }
     @Test
     public void totals()  {
-        assertEquals(0, calculatePrice(""));
-        assertEquals(40, calculatePrice("A"));
-        assertEquals(90, calculatePrice("AB"));
-        assertEquals(135, calculatePrice("CDBA"));
+        assertEquals(0, calculatePrice("", rule));
+        assertEquals(40, calculatePrice("A", rule));
+        assertEquals(90, calculatePrice("AB", rule));
+        assertEquals(135, calculatePrice("CDBA", rule));
 
-        assertEquals(80, calculatePrice("AA"));
-        assertEquals(100, calculatePrice("AAA"));
-        assertEquals(140, calculatePrice("AAAA"));
-        assertEquals(180, calculatePrice("AAAAA"));
-        assertEquals(200, calculatePrice("AAAAAA"));
+        assertEquals(80, calculatePrice("AA",rule));
+        assertEquals(100, calculatePrice("AAA", rule));
+        assertEquals(140, calculatePrice("AAAA", rule));
+        assertEquals(180, calculatePrice("AAAAA", rule));
+        assertEquals(200, calculatePrice("AAAAAA", rule));
 
-        assertEquals(150, calculatePrice("AAAB"));
-        assertEquals(180, calculatePrice("AAABB"));
-        assertEquals(200, calculatePrice("AAABBD"));
-        assertEquals(200, calculatePrice("DABABA"));
+        assertEquals(150, calculatePrice("AAAB", rule));
+        assertEquals(180, calculatePrice("AAABB", rule));
+        assertEquals(200, calculatePrice("AAABBD", rule));
+        assertEquals(200, calculatePrice("DABABA", rule));
     }
 
     @Test

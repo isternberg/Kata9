@@ -10,7 +10,7 @@ import test.helpers.AnotherRule;
 import static org.junit.Assert.assertEquals;
 
 
-public class TestPriceWithOtherRule {
+public class TestPriceWithOtherRule extends BaseTest{
 
     private CheckoutRule rule;
 
@@ -19,13 +19,6 @@ public class TestPriceWithOtherRule {
         rule = new AnotherRule();
     }
 
-    private int calculatePrice(String goods) {
-        CheckOut co = new CheckOut(rule);
-        for(int i=0; i<goods.length(); i++) {
-            co.scan(String.valueOf(goods.charAt(i)));
-        }
-        return co.total();
-    }
 
     @Test(expected = ProductNotInDBException.class)
     public void shouldThrowExceptionIfNoProductForKey()  {
@@ -35,11 +28,11 @@ public class TestPriceWithOtherRule {
 
     @Test
     public void totals()  {
-        assertEquals(0, calculatePrice(""));
-        assertEquals(20, calculatePrice("D"));
-        assertEquals(35, calculatePrice("DD"));
-        assertEquals(55, calculatePrice("DDD"));
-        assertEquals(95, calculatePrice("ADDD"));
+        assertEquals(0, calculatePrice("", rule));
+        assertEquals(20, calculatePrice("D", rule));
+        assertEquals(35, calculatePrice("DD", rule));
+        assertEquals(55, calculatePrice("DDD", rule));
+        assertEquals(95, calculatePrice("ADDD", rule));
     }
 
     @Test
